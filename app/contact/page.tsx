@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   MapPin,
   Phone,
@@ -102,14 +103,26 @@ export default function ContactPage() {
     <div className="flex flex-col">
       {/* Hero */}
       <section className="bg-primary/5 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a question about our products or need gardening advice? We&apos;re
-            here to help. Reach out and our team will get back to you shortly.
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Get in Touch
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
+                Have a question about our products or need gardening advice? We&apos;re
+                here to help. Reach out and our team will get back to you shortly.
+              </p>
+            </div>
+            <div className="relative aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/contact-store.jpg"
+                alt="Roro Gardening Tools Store"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

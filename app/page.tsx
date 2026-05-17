@@ -41,7 +41,7 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-square lg:aspect-auto lg:h-[500px]">
               <Image
-                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=800&fit=crop"
+                src="/images/hero-garden.jpg"
                 alt="Beautiful garden with plants and gardening tools"
                 fill
                 className="object-cover rounded-2xl"
@@ -55,44 +55,64 @@ export default function HomePage() {
       {/* Features */}
       <section className="py-12 border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Truck,
-                title: "Free Shipping",
-                desc: "On orders over $50",
-              },
-              {
-                icon: Shield,
-                title: "2-Year Warranty",
-                desc: "On all products",
-              },
-              {
-                icon: Leaf,
-                title: "Eco-Friendly",
-                desc: "Sustainable materials",
-              },
-              {
-                icon: Phone,
-                title: "Expert Support",
-                desc: "Garden advice 24/7",
-              },
-            ].map((feature) => (
-              <div
-                key={feature.title}
-                className="flex items-center gap-4 p-4 rounded-lg bg-secondary"
-              >
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <feature.icon className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{feature.desc}</p>
-                </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/tools-display.jpg"
+                alt="Premium gardening tools display"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Why Choose Roro Gardening Tools?
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                At Roro, we believe every gardener deserves access to premium quality tools. 
+                Our products are carefully curated to ensure durability, comfort, and 
+                outstanding performance for all your gardening needs.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    icon: Truck,
+                    title: "Free Shipping",
+                    desc: "On orders over $50",
+                  },
+                  {
+                    icon: Shield,
+                    title: "2-Year Warranty",
+                    desc: "On all products",
+                  },
+                  {
+                    icon: Leaf,
+                    title: "Eco-Friendly",
+                    desc: "Sustainable materials",
+                  },
+                  {
+                    icon: Phone,
+                    title: "Expert Support",
+                    desc: "Garden advice 24/7",
+                  },
+                ].map((feature) => (
+                  <div
+                    key={feature.title}
+                    className="flex items-center gap-4 p-4 rounded-lg bg-secondary"
+                  >
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

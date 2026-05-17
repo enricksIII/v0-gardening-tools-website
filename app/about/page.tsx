@@ -9,28 +9,12 @@ export default function AboutPage() {
     { value: "98%", label: "Satisfaction Rate" },
   ];
 
-  const team = [
-    {
-      name: "Rosa Garcia",
-      role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
-    },
-    {
-      name: "Marco Santos",
-      role: "Head of Product",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
-    },
-    {
-      name: "Elena Martinez",
-      role: "Lead Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
-    },
-    {
-      name: "David Chen",
-      role: "Operations Manager",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop",
-    },
-  ];
+  const founder = {
+    name: "Francis Roo Calumpang",
+    role: "Founder & CEO",
+    image: "/images/founder.jpg",
+    bio: "With over a decade of passion for gardening and sustainable living, Francis founded Roro Gardening Tools with a vision to make quality gardening accessible to everyone. His commitment to excellence and customer satisfaction has driven the company to become a trusted name in the industry.",
+  };
 
   const values = [
     {
@@ -87,7 +71,7 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-square lg:aspect-auto lg:h-[500px]">
               <Image
-                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=800&fit=crop"
+                src="/images/about-garden.jpg"
                 alt="Beautiful garden with plants"
                 fill
                 className="object-cover rounded-2xl"
@@ -158,32 +142,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Founder */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Meet Our Team
+              Meet the Founder
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              The passionate people behind Roro Gardening Tools
+              The vision behind Roro Gardening Tools
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member) => (
-              <div key={member.name} className="text-center group">
-                <div className="relative w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-card rounded-2xl border border-border overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative aspect-square md:aspect-auto">
                   <Image
-                    src={member.image}
-                    alt={member.name}
+                    src={founder.image}
+                    alt={founder.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover"
                   />
                 </div>
-                <h3 className="font-semibold text-foreground">{member.name}</h3>
-                <p className="text-sm text-muted-foreground">{member.role}</p>
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    {founder.name}
+                  </h3>
+                  <p className="text-primary font-medium mb-4">{founder.role}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {founder.bio}
+                  </p>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
