@@ -110,8 +110,8 @@ export function CartDrawer() {
                 <span>Total</span>
                 <span className="text-primary">${totalPrice.toFixed(2)}</span>
               </div>
-              <Button className="w-full" size="lg">
-                Checkout
+              <Button className="w-full" size="lg" asChild onClick={() => setIsCartOpen(false)}>
+                <Link href="/checkout">Proceed to Checkout</Link>
               </Button>
               <Button
                 variant="outline"

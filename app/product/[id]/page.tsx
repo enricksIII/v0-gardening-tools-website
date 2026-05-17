@@ -3,7 +3,7 @@
 import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import {
   Star,
   ShoppingCart,
@@ -31,6 +31,7 @@ export default function ProductPage({
   const product = getProductById(parseInt(id));
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const router = useRouter();
 
   if (!product) {
     notFound();
@@ -47,6 +48,13 @@ export default function ProductPage({
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
     }
+  };
+
+  const handleBuyNow = () => {
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    router.push("/checkout");
   };
 
   return (
@@ -163,34 +171,45 @@ export default function ProductPage({
           </div>
 
           {/* Quantity & Add to Cart */}
-          <div className="flex items-center gap-4 mb-8">
-            <div className="flex items-center border border-border rounded-lg">
+          <div className="flex flex-col gap-4 mb-8">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center border border-border rounded-lg">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  disabled={!product.inStock}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="w-12 text-center font-medium">{quantity}</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setQuantity((q) => q + 1)}
+                  disabled={!product.inStock}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
               <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                size="lg"
+                className="flex-1"
+                onClick={handleAddToCart}
                 disabled={!product.inStock}
               >
-                <Minus className="h-4 w-4" />
-              </Button>
-              <span className="w-12 text-center font-medium">{quantity}</span>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setQuantity((q) => q + 1)}
-                disabled={!product.inStock}
-              >
-                <Plus className="h-4 w-4" />
+                <ShoppingCart className="h-5 w-5 mr-2" />
+                Add to Cart
               </Button>
             </div>
             <Button
               size="lg"
-              className="flex-1"
-              onClick={handleAddToCart}
+              variant="secondary"
+              className="w-full"
+              onClick={handleBuyNow}
               disabled={!product.inStock}
             >
-              <ShoppingCart className="h-5 w-5 mr-2" />
-              Add to Cart
+              Buy Now
             </Button>
           </div>
 
